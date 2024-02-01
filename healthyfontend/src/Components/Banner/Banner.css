@@ -1,7 +1,7 @@
 .banner-container {
     width: 100%;
     height: auto;
-    background: url('../../../public/backgroundbanner.webp');
+    background: url('/backgroundbanner.webp');
     display: flex;
 }
 

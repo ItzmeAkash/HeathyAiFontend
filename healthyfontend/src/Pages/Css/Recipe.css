@@ -1,0 +1,105 @@
+.recipe-main{
+    width: 100%;
+    height: 1000px;
+  
+}
+.recipe{
+    background-color: #f1f7fc;
+    padding: 19px;
+}
+.recipe h1{
+ 
+  text-align: center;
+}
+.recipe p{
+    text-align: center
+}
+.recipe-input{
+    display: flex;
+    justify-content: center;
+    margin: 14px 0px;
+}
+.recipe-input input{
+    width: 43%;
+    height: 56px;
+    border: none;
+    background: #e4e4e4;
+    border-radius: 40px;
+    font-size: 22px;
+    padding: 0px 24px;
+}
+
+.recipe-input button{
+    border: none;
+    background: #16890c;
+    color: #fff;
+    border-radius: 30px;
+    width: 7%;
+    margin: 0px 6px;
+    font-size: 20px;
+}
+.recipe-input button:active{
+    background: hsl(115, 84%, 36%);
+
+}
+
+.recipe-result{
+    background-color: #16890c;
+    width: 100%;
+    height: 740px;
+    color: white;
+
+
+}
+.recipe-result h1{
+    text-align: center;
+    padding: 21px;
+}
+.recipeoutputs{
+ display: flex;
+}
+
+.recipe-ingredients{
+    width: 50%;
+    /* margin: 10px 44px; */
+    background: #1b8f11;
+    border-radius: 21px;
+    height: auto;
+    text-align: center;
+    margin: 0px 33px;
+}
+.recipe-ingredients h2{
+    padding: 15px 0px;
+}  
+
+
+.recipe-ingredients ul {
+    list-style-type: disc;
+    margin: 0;
+    padding: 0;
+}
+
+.recipe-instructions{
+    width: 50%;
+    /* margin: 10px 44px; */
+    background: #1b8f11;
+    border-radius: 21px;
+    height: auto;
+    text-align: center;
+    margin: 0px 33px;
+}
+.recipe-instructions h2{
+    padding: 15px 0px;
+}  
+
+
+.recipe-instructions ul {
+    list-style-type: disc;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
