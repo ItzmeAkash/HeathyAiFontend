@@ -68,6 +68,7 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+/*Resonsive styles**/
 
 /* Small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

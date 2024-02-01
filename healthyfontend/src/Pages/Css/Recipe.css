@@ -97,6 +97,38 @@
     padding: 0;
 }
 
+/*Resposive Style*/
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .recipe-input button{
+        width: 21%;
+    }
+    .recipe-input{
+        margin: 13px 5px; 
+    }
+
+}
+
+/* Medium devices (tablets, 601px to 900px) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .recipe-input button{
+        width: 21%;
+    }
+}
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+    .recipe-input button{
+        width: 21%;
+    }
+    
+
+}
+
+/* Large devices (desktops, 901px and up) */
+@media only screen and (min-width: 901px) {
+    
+
+}
 
 
 

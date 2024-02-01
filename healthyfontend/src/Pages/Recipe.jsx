@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Banner from '../Components/Banner/Banner';
 import './Css/Recipe.css';
 
 const Recipe = (props) => {
+  const [inputValue, setInputValues] = useState('');
+
+  const handleInputChange = (event) =>{
+    setInputValues(event.target.value)
+  }
+
+  const handleGenerate = () => {
+    // Here, you can use inputValue to perform further actions,
+    // such as generating a recipe based on the input value
+    const inputDataArray = inputValue.split(',').map(item => item.trim());
+    console.log(inputDataArray);
+  };
+
   return (
     <div className='recipe-container'>
       <Banner text={props.text}/>
@@ -12,8 +25,8 @@ const Recipe = (props) => {
           <p>Simply type a recipe idea or some ingredients you have on hand and DishGen's AI will instantly generate an all-new recipe on demand...</p>
         </div>
         <div className="recipe-input">
-          <input type="text" placeholder='Chicken, Tomato, etc...'/>
-          <button type='submit'>Generate</button>
+          <input type="text" placeholder='Chicken, Tomato, etc...' value={inputValue} onChange={handleInputChange}/>
+          <button type='submit' onClick={handleGenerate}>Generate</button>
         </div>
         <div className="recipe-result">
           <h1>Food Name</h1>
