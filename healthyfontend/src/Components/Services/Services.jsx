@@ -33,7 +33,7 @@ const Services = () => {
        <img src={foodclasimage} alt="" />
        <h2 id='foodimage'>Food Classification</h2>
        <p>"Explore precise food identification with our advanced image classification technology."</p>
-       <Link style={{textDecoration:'none'}} to='/foodclassification'><button style={{marginTop:'41px'}}>Click Here</button></Link>
+       <Link style={{textDecoration:'none'}} to='/foodimageclassification'><button style={{marginTop:'41px'}}>Click Here</button></Link>
     
         
        </div>    

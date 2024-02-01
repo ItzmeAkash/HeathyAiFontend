@@ -10,21 +10,26 @@ import Services from './Pages/MainServices'
 import ContactUs from './Pages/ContactUs'
 import Footer from './Components/Footer/Footer'
 function App() {
- const bannerHomeText = '"Prioritize a healthy lifestyle"';
- const bannerServiceText = '“Your diet is a bank account. Good food choices are good investments.”';
- const bannerHealthText = '“Eat breakfast like a king, lunch like a prince, and dinner like a pauper.”'
- const bannerRecpeText = "“Love yourself enough to live a healthy lifestyle”"
+  const bannerTexts = {
+    home: '"Prioritize a healthy lifestyle"',
+    service: '“Your diet is a bank account. Good food choices are good investments.”',
+    health: '“Eat breakfast like a king, lunch like a prince, and dinner like a pauper.”',
+    recipe: "“Love yourself enough to live a healthy lifestyle”",
+    bannerFoodImageText : "“An apple a day keeps the doctor away”"
+  };
+
   return (
     <>
     <BrowserRouter>
     <NavBar/>
     <Routes>
-      <Route path='/' element={<Home text={bannerHomeText} />}/>
+      <Route path='/' element={<Home text={bannerTexts.home} />}/>
       <Route path='/aboutus' element={<AboutUs/>}/>
-      <Route path='/service' element={<Services text={bannerServiceText}/>}/>
+      <Route path='/service' element={<Services text={bannerTexts.service}/>}/>
       <Route path='/contact' element={<ContactUs/>}/>
-      <Route path='/dietrecomdention' element={<DietRecomd text={bannerHealthText}/>}/>
-      <Route path='/recipe' element={<Recipe text={bannerRecpeText}/>}/>
+      <Route path='/dietrecomdention' element={<DietRecomd text={bannerTexts.health}/>}/>
+      <Route path='/recipe' element={<Recipe text={bannerTexts.recipe}/>}/>
+      <Route path='/foodimageclassification' element={<FoodImage text={bannerTexts.bannerFoodImageText}/>}/>
       
      </Routes>
      <Footer/>   
