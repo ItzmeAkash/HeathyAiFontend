@@ -1,0 +1,11 @@
+/* Reset some default styles */
+body, h1, h2, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Global styles */
+body {
+    font-family: 'Poppins', sans-serif;
+}

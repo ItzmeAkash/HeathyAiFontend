@@ -1,0 +1,63 @@
+.service-container{
+    background-image: url(../../../public/service-section-banner.webp);
+    width: 100%;
+    height: 601px;
+}
+.service-container h1{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.card{
+    width: 382px;
+    height: 450px;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.card img{
+    display: block;
+    margin: auto;
+    padding-top: 58px;
+}
+
+.card-container{
+    display: flex;
+    gap: 66px;
+    margin: 41px 310px;
+}
+
+.card:hover {
+
+    border: 2px solid hsl(38, 100%, 50%);
+}
+
+.card h2{
+    text-transform: capitalize;
+    margin: 12px 48px;
+}
+
+
+.card p{
+    margin: 15px 62px;
+}
+.card button{
+    background: #daffdc;
+    border: none;
+    width: 193px;
+    height: 55px;
+    border-radius: 25px;
+    margin: 19px 84px;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 650;
+    font-family: 'Poppins';
+    cursor: pointer;
+}
+
+.card button:hover{
+    color: #fff;
+    background: #f29c1f;
+}

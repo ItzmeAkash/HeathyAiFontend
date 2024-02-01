@@ -1,0 +1,110 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px;
+    box-shadow: 0 1px 3px -2px black;
+    background: white;
+    position: fixed;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+.nav-log{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-log img{
+    width: 200px;
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+    font-size: 20px;
+    font-weight: 500;
+
+}
+
+.nav-menu li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+}
+.nav-menu hr{
+    border: none;
+    width: 80%;
+    height:3px ;
+    border-radius: 10px;
+    background: green;
+}
+
+.nav-login{
+    display: flex;
+    align-items: center;
+    
+}
+.nav-login button{
+    width: 157px;
+    height: 58px;
+    outline: none;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 75px;
+    color: white;
+    background: hsla(115.2deg, 83.89%, 29.22%);
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    
+}
+.nav-login button:active{
+    background: hsl(115, 84%, 36%);
+
+}
+.menu-bars {
+    width: 157px;
+    height: 58px;
+    outline: none;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 75px;
+    color: white;
+    background: hsla(115.2deg, 83.89%, 29.22%);
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    display: none;
+}
+
+/* Responsive styles */
+
+@media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .nav-menu {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      display: none;
+    }
+  
+    .nav-menu.visible {
+      display: flex;
+    }
+  
+    .menu-bars {
+      display: block;
+      margin-top: 10px;
+     
+    }
+  }

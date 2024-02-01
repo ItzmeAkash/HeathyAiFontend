@@ -1,0 +1,56 @@
+.banner-container {
+    width: 100%;
+    height: auto;
+    background: url('../../../public/backgroundbanner.webp');
+    display: flex;
+}
+
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 25px;
+    font-size: 25px;
+    width: 50%;
+    font-weight: bold;
+    margin-left: 60px;
+}
+
+.banner-text button {
+    margin-top: 15px;
+    font-size: 20px;
+    display: flex;
+    width: 168px;
+    height: 58px;
+    outline: none;
+    border-radius: 75px;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 17px;
+    padding-left: 40px;
+    margin-left: 14px;
+    border: none;
+    gap: 10px;
+}
+.banner-text button:hover{
+    color: white;
+    background: hsla(115.2deg, 83.89%, 29.22%);
+}
+.banner-text button:active {
+    background: hsl(115, 84%, 36%);
+}
+
+.banner-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.banner-image img {
+    max-width: 100%;
+    height: auto;
+}
