@@ -1,8 +1,8 @@
 import React from 'react'
 import './Services.css'
-import foodrecomdimage from '../../../public/food-recommednation.webp'
-import foodrecipeimage from '../../../public/recipe.webp'
-import foodclasimage from '../../../public/foodimageidentify.webp'
+import foodrecomdimage from '/food-recommednation.webp'
+import foodrecipeimage from '/recipe.webp'
+import foodclasimage from '/foodimageidentify.webp'
 import { Link } from 'react-router-dom'
 
 const Services = () => {

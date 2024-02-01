@@ -1,5 +1,5 @@
 .service-container{
-    background-image: url(../../../public/service-section-banner.webp);
+    background-image: url(/service-section-banner.webp);
     width: 100%;
     height: 601px;
 }

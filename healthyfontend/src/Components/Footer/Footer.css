@@ -1,6 +1,6 @@
 
 .footer-contrainer{
-    background: url('../../../public/footer.webp');
+    background: url('/footer.webp');
     display: flex;
     flex-direction: column;
     justify-content: center;

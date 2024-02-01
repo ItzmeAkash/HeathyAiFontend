@@ -1,8 +1,8 @@
 import React from 'react'
 import './Footer.css'
-import logo from '../../../public/logo.png'
-import instgram from '../../../public/instagram_icon.png'
-import whatsapp from '../../../public/whatsapp_icon.png'
+import logo from '/logo.png'
+import instgram from '/instagram_icon.png'
+import whatsapp from '/whatsapp_icon.png'
 const Footer = () => {
   return (
     <div className='footer-contrainer'>

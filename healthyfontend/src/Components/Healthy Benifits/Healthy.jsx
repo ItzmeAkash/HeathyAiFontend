@@ -1,9 +1,9 @@
 import React from 'react'
 import './Healthy.css'
-import Health from'../../../public/healthybenifits.webp'
-import Healthfood from'../../../public/healthyfoods.webp'
-import cooldrinks from '../../../public/avoidcooldrinks.webp'
-import vegitable from '../../../public/consumeveg.webp'
+import Health from'/healthybenifits.webp'
+import Healthfood from'/healthyfoods.webp'
+import cooldrinks from '/avoidcooldrinks.webp'
+import vegitable from '/consumeveg.webp'
 
 const Healthy = () => {
   return (

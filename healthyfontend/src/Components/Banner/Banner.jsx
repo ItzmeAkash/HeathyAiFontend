@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Banner.css'
-import banner from '../../../public/banner.png'
+import banner from '/banner.png'
 import { Link } from 'react-router-dom'
 import { FaArrowRight } from "react-icons/fa";
 
