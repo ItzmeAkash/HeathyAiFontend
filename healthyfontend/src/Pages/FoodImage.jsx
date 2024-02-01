@@ -33,11 +33,11 @@ const FoodImage = (props) => {
          {image && (
           
           <div className="uploaded-image-container">
-            {/* <h1>Food Name</h1> */}
+            
             <img src={image} alt="uploaded" className='uploaded-image'/>
             
             <div className="nutriations">
-            <h1>Nutrition Details</h1>
+            <h1>Food Name</h1>
 
                 <table className="nutrition-table">
                   <tr>
