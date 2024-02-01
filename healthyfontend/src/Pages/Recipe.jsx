@@ -23,12 +23,19 @@ const Recipe = (props) => {
               <ol start="1">
                 <li>Sugar</li>
                 <li>Apple</li>
+                <li>Apple</li>
+  
               </ol>
             </div>
             <div className="recipe-instructions">
               <h2>Instructions</h2>
               <ol start="1">
                 <li>Sugar</li>
+                <li>Apple</li>
+                <li>Apple</li>
+                <li>Apple</li>
+                <li>Apple</li>
+                <li>Apple</li>
                 <li>Apple</li>
               </ol>
             </div>

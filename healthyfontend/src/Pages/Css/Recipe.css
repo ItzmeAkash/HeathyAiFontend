@@ -1,6 +1,6 @@
 .recipe-main{
     width: 100%;
-    height: 1000px;
+    height: auto;
   
 }
 .recipe{
@@ -46,7 +46,7 @@
 .recipe-result{
     background-color: #16890c;
     width: 100%;
-    height: 740px;
+    height: auto;
     color: white;
 
 
@@ -61,12 +61,11 @@
 
 .recipe-ingredients{
     width: 50%;
-    /* margin: 10px 44px; */
     background: #1b8f11;
     border-radius: 21px;
     height: auto;
     text-align: center;
-    margin: 0px 33px;
+    margin: 31px 33px;
 }
 .recipe-ingredients h2{
     padding: 15px 0px;
@@ -81,12 +80,11 @@
 
 .recipe-instructions{
     width: 50%;
-    /* margin: 10px 44px; */
     background: #1b8f11;
     border-radius: 21px;
     height: auto;
     text-align: center;
-    margin: 0px 33px;
+    margin: 31px 33px;
 }
 .recipe-instructions h2{
     padding: 15px 0px;
