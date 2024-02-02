@@ -1,8 +1,15 @@
 import React from 'react'
+import Banner from '../Components/Banner/Banner'
 
-const AboutUs = () => {
+const AboutUs = (props) => {
   return (
-    <div>AboutUs</div>
+    <>
+       <div className='aboutus-container'>
+       <Banner text={props.text}/>
+
+    </div>
+    </>
+    
   )
 }
 

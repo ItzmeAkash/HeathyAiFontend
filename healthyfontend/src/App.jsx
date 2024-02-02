@@ -9,6 +9,7 @@ import AboutUs from './Pages/AboutUs'
 import Services from './Pages/MainServices'
 import ContactUs from './Pages/ContactUs'
 import Footer from './Components/Footer/Footer'
+import LoginSignup from './Pages/LoginSignup'
 function App() {
   const bannerTexts = {
     home: '"Prioritize a healthy lifestyle"',
@@ -24,12 +25,13 @@ function App() {
     <NavBar/>
     <Routes>
       <Route path='/' element={<Home text={bannerTexts.home} />}/>
-      <Route path='/aboutus' element={<AboutUs/>}/>
+      <Route path='/aboutus' element={<AboutUs text={bannerTexts.bannerFoodImageText}/>}/>
       <Route path='/service' element={<Services text={bannerTexts.service}/>}/>
-      <Route path='/contact' element={<ContactUs/>}/>
+      <Route path='/contact' element={<ContactUs text={bannerTexts.bannerFoodImageText} />}/>
       <Route path='/dietrecomdention' element={<DietRecomd text={bannerTexts.health}/>}/>
       <Route path='/recipe' element={<Recipe text={bannerTexts.recipe}/>}/>
       <Route path='/foodimageclassification' element={<FoodImage text={bannerTexts.bannerFoodImageText}/>}/>
+      <Route path='/login' element={<LoginSignup/>}/>
       
      </Routes>
      <Footer/>   

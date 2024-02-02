@@ -1,8 +1,11 @@
 import React from 'react'
+import Banner from '../Components/Banner/Banner'
 
-const ContactUs = () => {
+const ContactUs = (props) => {
   return (
-    <div>ContactUs</div>
+    <div>ContactUs
+      <Banner text={props.text}/>
+       </div>
   )
 }
 
