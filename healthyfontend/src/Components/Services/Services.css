@@ -64,43 +64,144 @@
 
 
 /*Resposive Style*/
-
-/* Small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-
-
-}
-
-/* Medium devices (tablets, 601px to 900px) */
-@media only screen and (min-width: 601px) and (max-width: 900px) {
- 
-}
-
-
-
-
-@media only screen and (min-width: 900px) and (max-width: 1200px) {
+@media only screen and (min-width: 375px) and (max-width: 426px) {
     .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 66px;
-        margin: 32px 56px;
+        
+        gap: 0px;
+       
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* Two columns with equal width */
+        /* Adjust gap between cards */
+        max-width: 952px; /* Maximum width of card container */
+        margin: 0 auto; 
     }
-
-}
-
-@media only screen and (min-width: 1024) and (max-width: 1400) {
-    .service-container{
-        /* background-image: url(/service-section-banner.webp);
-        width: 100%;
-        height: 601px; */
+    .card img {
+        /* display: block; */
+        /* margin: auto; */
+        width: 16%;
+        padding-top: 16px;
     }
-}
-/* Large devices (desktops, 901px and up)
-@media only screen and (min-width: 901px) {
-    
-    .health-left img {
+    .card h2{
+        
+            font-size: 14px;
         
     }
-} */
+    .card p{
+        font-size: 8px;
+        margin: 0px 45px;
+    }
+    .card button{
+        width: 151px;
+        height: 47px;
+        margin: 19px 57px;
+    }
+    .card {
+        width: 271px;
+        height: 233px;
+        margin: 10px 59px;
+        
+    }
+    .service-container {
+        height: auto;
+    }
+
+ }
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+    /* .card-container {
+        display: flex;
+        gap: 66px;
+        margin: 37px 34px;
+    } */
+    .service-container {
+        margin: 253px 0px;
+        height: auto;
+    }
+    .card {
+        width: 318px;
+        margin: 0px 15px;
+        height: 483px;
+        margin: 21px 18px
+    }
+    .card p {
+        margin: 16px 0px;
+        padding: 0px 27px;
+    }
+    
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+        gap: 49px; /* Adjust gap between cards */
+        max-width: 952px; /* Maximum width of card container */
+        margin: 0 auto; /* Center the cards */
+    }
+    
+    .card button {
+        background: #daffdc;
+        border: none;
+        width: 193px;
+        height: 55px;
+        border-radius: 25px;
+        margin: 17px 60px;
+        font-size: 17px;
+        text-transform: uppercase;
+        font-weight: 650;
+        font-family: 'Poppins';
+        cursor: pointer;
+    }
+    /* Only for the last card */
+    .card:last-child {
+        grid-column: span 2; /* Span two columns */
+        justify-self: center; /* Center the card horizontally */
+        align-self: center; /* Center the card vertically */
+    }
+}
+/* Medium devices (tablets, 601px to 900px) */
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .card-container {
+        display: flex;
+        gap: 66px;
+        margin: 37px 34px;
+    }
+
+    .card {
+        width: 273px;
+        height: 477px;
+        background-color: white;
+        cursor: pointer;
+        border: 1px solid white;
+    }
+    
+
+.card button {
+    background: #daffdc;
+    border: none;
+    width: 132px;
+    height: 47px;
+    /* border-radius: 25px; */
+    margin: 15px 63px;
+    font-size: 17px;
+    /* text-transform: uppercase; */
+    /* font-weight: 600; */
+    /* font-family: 'Poppins'; */
+    /* cursor: pointer; */
+}
+    
+.card p {
+        margin: 0px 0px;
+        padding: 2px 28px;
+    }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    .card-container {
+        display: flex;
+        gap: 66px;
+        margin: 41px 109px;
+    }
+}
+
+
+
+
+
