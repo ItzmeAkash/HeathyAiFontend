@@ -12,9 +12,9 @@ const Home = (props) => {
     <>  
   
         <Banner text={props.text} showButton={true}/>
-        <Healthy/>
-        <Services/>
-        <ContactUs/>
+        {/* <Healthy/> */}
+        {/* <Services/>
+        <ContactUs/> */}
     </>
 
   )

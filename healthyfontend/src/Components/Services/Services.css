@@ -61,3 +61,46 @@
     color: #fff;
     background: #f29c1f;
 }
+
+
+/*Resposive Style*/
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+
+}
+
+/* Medium devices (tablets, 601px to 900px) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+ 
+}
+
+
+
+
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 66px;
+        margin: 32px 56px;
+    }
+
+}
+
+@media only screen and (min-width: 1024) and (max-width: 1400) {
+    .service-container{
+        /* background-image: url(/service-section-banner.webp);
+        width: 100%;
+        height: 601px; */
+    }
+}
+/* Large devices (desktops, 901px and up)
+@media only screen and (min-width: 901px) {
+    
+    .health-left img {
+        
+    }
+} */

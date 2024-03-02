@@ -66,6 +66,98 @@
 
 
 /* Responsive Section */
+
+/*Resposive Style*/
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .health-left img {
+
+    }
+
+}
+
+/* Medium devices (tablets, 601px to 900px) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .health-left img {
+        margin-left: 63px;
+        width: 426px;
+    }
+    .health-icon {
+        margin: -13px -468px;
+        width: 348%;
+    }
+    
+
+    .container {
+        width: 100%;
+        height: 800px;
+     
+        margin-bottom: 241px;
+    }
+  
+}
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+    .health-left img {
+            margin-left: 63px;
+            width: 426px;
+    }
+    .health-icon {
+        margin: 126px -402px;
+        width: 236%;
+    }
+    
+
+    .container {
+        width: 100%;
+        height: 713px;
+        margin: 3px 0px;
+        margin-bottom: 241px;
+    }
+    
+
+}
+
+
+@media only screen and (min-width: 852px) and (max-width: 899px) {
+    .health-icon {
+        margin: 0px -401px;
+        width: 275%;
+    }
+}
+
+
+@media only screen and (min-width: 900px) and (max-width: 940px) {
+    .health-icon {
+        margin: 51px -402px;
+        width: 236%;
+    }
+    .container {
+        height: 745px;    
+    }
+}
+
+
+@media only screen and (min-width: 1200) and (max-width: 1400) {
+    
+    .health-left img {
+        width: 548px;
+        margin-left: 109px;
+}
+}
+/* Large devices (desktops, 901px and up)
+@media only screen and (min-width: 901px) {
+    
+    .health-left img {
+        
+    }
+} */
+
+
+
+
+/* 
+
 @media (width: 1268px) {
     .health-left img {
         width: 400px;
@@ -153,4 +245,4 @@
     .health-icon p{
      width: 200px;
     }
-  }
+  } */
