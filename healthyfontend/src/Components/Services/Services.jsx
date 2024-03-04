@@ -9,7 +9,9 @@ const Services = () => {
   return (
 
     <>
-        <div className='service-container'>
+    <section id='serviceid'>
+
+    <div  className='service-container'>
        <h1>Our Services</h1>
        <div className="card-container">
        <div  className="card">
@@ -42,6 +44,8 @@ const Services = () => {
        
 
     </div>
+    </section>
+
     </>
 
   )

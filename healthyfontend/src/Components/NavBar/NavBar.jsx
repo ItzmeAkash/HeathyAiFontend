@@ -30,7 +30,7 @@ const NavBar = () => {
             {menu === 'Home' ? <hr /> : <></>}
           </li>
           <li onClick={() => handleMenuItemClick('About Us')}>
-            <Link style={{textDecoration:'none', color:'black'}} to="/aboutus">About Us</Link>
+            <Link style={{textDecoration:'none', color:'black'}} to="/">About Us</Link>
             {menu === 'About Us' ? <hr /> : <></>}
           </li>
           <li onClick={() => handleMenuItemClick('Services')}>
@@ -38,7 +38,7 @@ const NavBar = () => {
             {menu === 'Services' ? <hr /> : <></>}
           </li>
           <li onClick={() => handleMenuItemClick('Contact Us')}>
-            <Link style={{textDecoration:'none', color:'black'}} to="/contact">Contact Us</Link>
+            <Link style={{textDecoration:'none', color:'black'}} to="/">Contact Us</Link>
             {menu === 'Contact Us' ? <hr /> : <></>}
           </li>
         </ul>

@@ -3,7 +3,7 @@ import Banner from '../Components/Banner/Banner'
 
 const ContactUs = (props) => {
   return (
-    <div>ContactUs
+    <div>
       <Banner text={props.text}/>
        </div>
   )

@@ -118,13 +118,17 @@ input::-webkit-inner-spin-button {
     .dietrecomd-form {
         width: 56%;
     }
+    .banner-text h1{
+        font-size: 25px;
+    }
 
 }
 
 /* Large devices (desktops, 901px and up) */
-@media only screen and (min-width: 901px) {
-    
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
     .dietrecomd-form {
-        width :35%
+       
+        width: 40%;
     }
 }
+ 

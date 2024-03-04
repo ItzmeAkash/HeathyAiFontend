@@ -4,7 +4,7 @@ import Banner from '../Components/Banner/Banner'
 const AboutUs = (props) => {
   return (
     <>
-       <div className='aboutus-container'>
+       <div id='a' className='aboutus-container'>
        <Banner text={props.text}/>
 
     </div>
