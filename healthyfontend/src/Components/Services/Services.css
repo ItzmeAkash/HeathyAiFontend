@@ -64,7 +64,8 @@
 
 
 /*Resposive Style*/
-@media only screen and (min-width: 375px) and (max-width: 426px) {
+
+@media only screen and (min-width: 320px) and (max-width: 375px) {
     .card-container {
         
         gap: 0px;
@@ -98,7 +99,49 @@
     .card {
         width: 271px;
         height: 233px;
-        margin: 10px 59px;
+        margin: 10px 53px;
+        
+    }
+    .service-container {
+        height: auto;
+    }
+
+}
+@media only screen and (min-width: 376px) and (max-width: 426px) {
+    .card-container {
+        
+        gap: 0px;
+       
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* Two columns with equal width */
+        /* Adjust gap between cards */
+        max-width: 952px; /* Maximum width of card container */
+        margin: 0 auto; 
+    }
+    .card img {
+        /* display: block; */
+        /* margin: auto; */
+        width: 16%;
+        padding-top: 16px;
+    }
+    .card h2{
+        
+            font-size: 14px;
+        
+    }
+    .card p{
+        font-size: 8px;
+        margin: 0px 45px;
+    }
+    .card button{
+        width: 151px;
+        height: 47px;
+        margin: 19px 57px;
+    }
+    .card {
+        width: 271px;
+        height: 233px;
+        margin: 10px 74px;
         
     }
     .service-container {
@@ -116,6 +159,7 @@
     .service-container {
         margin: 253px 0px;
         height: auto;
+        margin-bottom: 49px;
     }
     .card {
         width: 318px;

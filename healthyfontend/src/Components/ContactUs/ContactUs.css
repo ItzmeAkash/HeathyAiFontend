@@ -5,34 +5,96 @@
     color: #fff;
 }
 
-.contactus h3{
-    padding: 37px 46pc;
+.contactus{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contactus h3 {
     font-size: 35px;
     text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.contactus h5{
-    padding: 5px 38pc;
+.contactus h5 {
     font-size: 26px;
-
     text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .contactus button{
     background: #ffffff;
     border: none;
     width: 193px;
     height: 55px;
     border-radius: 25px;
-    margin: 19px 52pc;
     font-size: 17px;
     text-transform: uppercase;
     font-weight: 650;
     font-family: 'Poppins';
     cursor: pointer;
     color: #525470;
+    margin: 0 auto; /* This will center the button horizontally */
+    display: block
 }
 
 .contactus button:hover{
     color: #fff;
     background: #86ba09;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 768px){
+    
+}
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+    .contactus{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .contactus h3 {
+        font-size: 23px;
+    }
+    .contactus h5 {
+        font-size: 14px;
+    }
+    .contactus button {
+        width: 126px;
+        height: 34px;
+        font-size: 13px;
+    }
+    .contactus-container {
+        padding: 14px 0px;
+        height: auto;
+    }
+}
+@media screen and (min-width:376px) and (max-width:425px){
+    .contactus{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .contactus h3 {
+        font-size: 23px;
+    }
+
+        .contactus h5 {
+            font-size: 16px;
+    }
+    .contactus button {
+        width: 162px;
+        height: 46px;
+        font-size: 15px;
+    }
+    .contactus-container {
+        padding: 14px 0px;
+        height: auto;
+    }
 }

@@ -14,7 +14,7 @@ const Home = (props) => {
         <Banner text={props.text} showButton={true}/>
         <Healthy/>
         <Services/>
-        {/* <ContactUs/> */}
+        <ContactUs/>
     </>
 
   )
