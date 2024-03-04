@@ -174,10 +174,10 @@
     
     .card-container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
-        gap: 49px; /* Adjust gap between cards */
-        max-width: 952px; /* Maximum width of card container */
-        margin: 0 auto; /* Center the cards */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 49px; 
+        max-width: 952px; 
+        margin: 0 auto; 
     }
     
     .card button {
@@ -193,11 +193,11 @@
         font-family: 'Poppins';
         cursor: pointer;
     }
-    /* Only for the last card */
+    
     .card:last-child {
-        grid-column: span 2; /* Span two columns */
-        justify-self: center; /* Center the card horizontally */
-        align-self: center; /* Center the card vertically */
+        grid-column: span 2; 
+        justify-self: center; 
+        align-self: center; 
     }
 }
 /* Medium devices (tablets, 601px to 900px) */
@@ -223,13 +223,10 @@
     border: none;
     width: 132px;
     height: 47px;
-    /* border-radius: 25px; */
+    
     margin: 15px 63px;
     font-size: 17px;
-    /* text-transform: uppercase; */
-    /* font-weight: 600; */
-    /* font-family: 'Poppins'; */
-    /* cursor: pointer; */
+   
 }
     
 .card p {
