@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Css/DietRecomd.css'
 import Banner from '../Components/Banner/Banner'
-
+import { useDispatch, useSelector} from 'react-redux'
 
 const DietRecomd = (props) => {
   const [formData, setFormData] = useState({
