@@ -5,30 +5,74 @@ import emailIcon from '/email.png';
 import passwordIcon from '/password.png';
 import Banner from '../Components/Banner/Banner';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAction, setInput,  } from '../redux/loginSignupReducer';
+import { setAction, setInput, setLoginErrorMessage, setSignupErrorMessage } from '../redux/loginSignupReducer';
+import axios from 'axios';
 
 const LoginSignup = () => {
   const dispatch = useDispatch();
   const {
-     action, 
-     emailLogin, 
-     emailSignup, 
-     passwordLogin, 
-     passwordSignup, 
-     firstName, 
-     lastName, 
-     confirmPassword 
-    } = useSelector((state) => state.loginSignup);
+    action,
+    emailLogin,
+    emailSignup,
+    passwordLogin,
+    passwordSignup,
+    firstName,
+    lastName,
+    confirmPassword,
+    signupErrorMessage,
+    loginErrorMessage,
+  } = useSelector((state) => state.loginSignup);
 
   const handleActionChange = (newAction) => {
-    dispatch(setAction(newAction))
+    dispatch(setAction(newAction));
   };
 
-
-
-  const handleInputChange = ({ target: { name , value}}) =>{
-    dispatch(setInput({ name, value}))
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    dispatch(setInput({ name, value }));
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (passwordSignup !== confirmPassword) {
+      console.log(dispatch(setSignupErrorMessage({ confirmPassword: 'Passwords do not match' })));
+      window.alert('passweord not match')
+      return;
+    }
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/auth/signup/', {
+        first_name: firstName,
+        last_name: lastName,
+        email: emailSignup,
+        password: passwordSignup
+      }, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+      if (response.status === 200) {
+        window.alert(response.data.messages)
+        handleActionChange('Login')
+        console.log(response.data);
+
+        // Reset form fields to empty strings
+        dispatch(setInput({ name: 'firstName', value: '' }));
+        dispatch(setInput({ name: 'lastName', value: '' }));
+        dispatch(setInput({ name: 'emailSignup', value: '' }));
+        dispatch(setInput({ name: 'passwordSignup', value: '' }));
+        dispatch(setInput({ name: 'confirmPassword', value: '' }));
+
+      } else if (response.status === 400) {
+        dispatch(setSignupErrorMessage(response.data.messages))
+      } else {
+        console.log('failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      if (error.response && error.response.data) {
+        dispatch(setSignupErrorMessage(error.response.data.messages));
+      }
+    }
+  };
+
 
 
   return (
@@ -36,47 +80,55 @@ const LoginSignup = () => {
       <div className='login-container'>
         <Banner />
         <div className="login">
-          <div className="header">
-            <div className="text">{action}</div>
-            <div className="underline"></div>
-          </div>
-          <div className="inputs">
-            {action === "Login" ? null : (
-              <>
-                <div className="input">
-                  <img src={userIcon} alt="" />
-                  <input type="text" name="firstName" placeholder='First Name' value={firstName} onChange={handleInputChange} />
-                </div>
-                <div className="input">
-                  <img src={userIcon} alt="" />
-                  <input type="text" name="lastName" placeholder='Last Name' value={lastName} onChange={handleInputChange} />
-                </div>
-              </>
-            )}
-            <div className="input">
-              <img src={emailIcon} alt="" />
-              <input type="email" name={action === "Login" ? "emailLogin" : "emailSignup"} placeholder='Email' value={action === "Login" ? emailLogin : emailSignup} onChange={handleInputChange} />
+          <form onSubmit={handleSubmit}>
+            <div className="header">
+              <div className="text">{action}</div>
+              <div className="underline"></div>
             </div>
-            <div className="input">
-              <img src={passwordIcon} alt="" />
-              <input type="password" name={action === "Login" ? "passwordLogin" : "passwordSignup"} placeholder='Password' value={action === "Login" ? passwordLogin : passwordSignup} onChange={handleInputChange} />
-            </div>
-            {action === "Login" ? null : (
+            <div className="inputs">
+              {action === "Login" ? null : (
+                <>
+                  <div className="input">
+                    <img src={userIcon} alt="" />
+                    <input type="text" name="firstName" placeholder='First Name' value={firstName} onChange={handleInputChange} />
+                    <span className='error'>{signupErrorMessage.first_name}</span>
+
+                  </div>
+                  <div className="input">
+                    <img src={userIcon} alt="" />
+                    <input type="text" name="lastName" placeholder='Last Name' value={lastName} onChange={handleInputChange} />
+                    <span className='error'>{signupErrorMessage.last_name}</span>
+                  </div>
+                </>
+              )}
+              <div className="input">
+                <img src={emailIcon} alt="" />
+                <input type="email" name={action === "Login" ? "emailLogin" : "emailSignup"} placeholder='Email' value={action === "Login" ? emailLogin : emailSignup} onChange={handleInputChange} />
+                <span className='error'>{action === "Login" ? loginErrorMessage.email : signupErrorMessage.email}</span>
+              </div>
               <div className="input">
                 <img src={passwordIcon} alt="" />
-                <input type="password" name="confirmPassword" placeholder='Confirm Password' value={confirmPassword} onChange={handleInputChange} />
+                <input type="password" name={action === "Login" ? "passwordLogin" : "passwordSignup"} placeholder='Password' value={action === "Login" ? passwordLogin : passwordSignup} onChange={handleInputChange} />
+                <span className='error'>{action === "Login" ? loginErrorMessage.password : signupErrorMessage.password}</span>
               </div>
-            )}
-          </div>
-          {action === "Login" ? (
-            <div className="forgot-password">
-              forgot password? <span>Click Here</span>
+              {action === "Login" ? null : (
+                <div className="input">
+                  <img src={passwordIcon} alt="" />
+                  <input type="password" name="confirmPassword" placeholder='Confirm Password' value={confirmPassword} onChange={handleInputChange} />
+                  <span className='error'>{signupErrorMessage.password}</span>
+                </div>
+              )}
             </div>
-          ) : null}
-          <div className="submit-container">
-            <button className={action === "Login" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Sign Up')}>Register</button>
-            <button className={action === "Sign Up" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Login')}  >Login</button>
-          </div>
+            {action === "Login" ? (
+              <div className="forgot-password">
+                forgot password? <span>Click Here</span>
+              </div>
+            ) : null}
+            <div className="submit-container">
+              <button type="submit" className={action === "Login" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Sign Up')} >Register</button>
+              <button type="submit" className={action === "Sign Up" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Login')}  >Login</button>
+            </div>
+          </form>
         </div>
       </div>
     </>

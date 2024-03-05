@@ -10,6 +10,18 @@ const initialState = {
   firstName: '',
   lastName: '',
   confirmPassword: '',
+  signupErrorMessage:{
+    firstName:'',
+    lastName:'', 
+    emailSignup:'',
+    passwordSignup:'',
+    confirmPassword:''
+  },
+  loginErrorMessage:{
+    emailLogin:'',
+    passwordLogin:''
+
+  }
 };
 
 const loginSignupSlice = createSlice({
@@ -23,9 +35,15 @@ const loginSignupSlice = createSlice({
             const { name, value } = action.payload;
             state[name] = value;
         },
+        setSignupErrorMessage:(state,action) =>{
+            state.signupErrorMessage = action.payload;
+        },
+        setLoginErrorMessage:(state,action) =>{
+            state.loginErrorMessage = action.payload
+        },
     },
 })
 
-export const { setAction, setInput } = loginSignupSlice.actions;
+export const { setAction, setInput, setSignupErrorMessage, setLoginErrorMessage } = loginSignupSlice.actions;
 
 export default loginSignupSlice.reducer;

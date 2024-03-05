@@ -1,4 +1,6 @@
 .login-container{
+    display: flex;
+    flex-direction: column;
 }
 .login{
     display: flex;
@@ -49,6 +51,7 @@
    height: 80px;
    background: #eaeaea;
    border-radius: 6px;
+   position: relative;
 }
 
 .input img{
@@ -99,16 +102,22 @@
     border: none;
   }
 
+
+  .error {
+    color: red;
+    font-size: 10px;
+    margin-top: -10px;
+    position: absolute;
+    bottom: -2px;
+    left: 83px;
+}
+
+
+  
   /*Resonsive styles**/
 
 /* Small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
 
-    .login{
-
-    }
-
-}
 
 /* Medium devices (tablets, 601px to 900px) */
 @media only screen and (min-width: 601px) and (max-width: 900px) {
