@@ -7,6 +7,8 @@ import Banner from '../Components/Banner/Banner';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAction, setInput, setLoginErrorMessage, setSignupErrorMessage } from '../redux/loginSignupReducer';
 import axios from 'axios';
+import { ToastContainer, toast,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginSignup = () => {
   const dispatch = useDispatch();
@@ -36,7 +38,12 @@ const LoginSignup = () => {
     e.preventDefault();
     if (passwordSignup !== confirmPassword) {
       console.log(dispatch(setSignupErrorMessage({ confirmPassword: 'Passwords do not match' })));
-      window.alert('passweord not match')
+        toast.error('Passweord not match',{
+          autoClose: 7000,
+          toastId: 'server-error-toast',
+          position: "top-center"
+        })
+      
       return;
     }
     try {
@@ -49,7 +56,13 @@ const LoginSignup = () => {
         headers: { 'Content-Type': 'application/json' }
       });
       if (response.status === 200) {
-        window.alert(response.data.messages)
+
+        // Registerion Sucess Alert
+        toast.success(response.data.messages,{
+          autoClose: 7000,
+          toastId: 'success',
+          position: "top-center"
+        })
         handleActionChange('Login')
         console.log(response.data);
 
@@ -67,6 +80,14 @@ const LoginSignup = () => {
       }
     } catch (error) {
       console.error('Error:', error);
+
+      if (!error.response){
+        toast.error('Failed to connect to the server. Please try again later.',{
+          autoClose: 7000,
+          toastId: 'server-error-toast',
+          position: "top-center"
+        })
+      }
       if (error.response && error.response.data) {
         dispatch(setSignupErrorMessage(error.response.data.messages));
       }
@@ -80,6 +101,7 @@ const LoginSignup = () => {
       <div className='login-container'>
         <Banner />
         <div className="login">
+        <ToastContainer />
           <form onSubmit={handleSubmit}>
             <div className="header">
               <div className="text">{action}</div>

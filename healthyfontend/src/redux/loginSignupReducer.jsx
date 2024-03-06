@@ -24,6 +24,7 @@ const initialState = {
   }
 };
 
+// Registeraion Slice 
 const loginSignupSlice = createSlice({
     name:'loginSignup',
     initialState,
@@ -40,10 +41,10 @@ const loginSignupSlice = createSlice({
         },
         setLoginErrorMessage:(state,action) =>{
             state.loginErrorMessage = action.payload
-        },
+        }
     },
 })
 
-export const { setAction, setInput, setSignupErrorMessage, setLoginErrorMessage } = loginSignupSlice.actions;
+export const { setAction, setInput, setSignupErrorMessage, setLoginErrorMessage} = loginSignupSlice.actions;
 
 export default loginSignupSlice.reducer;
