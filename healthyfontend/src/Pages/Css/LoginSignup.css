@@ -110,10 +110,28 @@
     position: absolute;
     bottom: -2px;
     left: 83px;
+}.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 59px;
+    color: #fff;
+    background: #16890c;
+    border-radius: 28px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
 }
-
-
-  
+.button:active{
+    background: #25ad19;
+}
+.buttonSubmit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   /*Resonsive styles**/
 
 /* Small devices (phones, 600px and down) */

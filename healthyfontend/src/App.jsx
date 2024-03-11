@@ -31,7 +31,7 @@ function App() {
       <Route path='/dietrecomdention' element={<DietRecomd text={bannerTexts.health}/>}/>
       <Route path='/recipe' element={<Recipe text={bannerTexts.recipe}/>}/>
       <Route path='/foodimageclassification' element={<FoodImage text={bannerTexts.bannerFoodImageText}/>}/>
-      <Route path='/login' element={<LoginSignup/>}/>
+      <Route path='/Login' element={<LoginSignup/>}/>
       
      </Routes>
      <Footer/>   

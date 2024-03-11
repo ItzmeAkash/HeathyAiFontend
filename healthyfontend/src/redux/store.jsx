@@ -4,6 +4,6 @@ import loginSignupReducer from './loginSignupReducer';
 
 export default configureStore({
     reducer: {
-        loginSignup: loginSignupReducer,
+        loginSignup: loginSignupReducer,    
     }
 });

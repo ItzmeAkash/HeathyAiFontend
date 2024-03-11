@@ -5,7 +5,7 @@ import emailIcon from '/email.png';
 import passwordIcon from '/password.png';
 import Banner from '../Components/Banner/Banner';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAction, setInput, setLoginErrorMessage, setSignupErrorMessage } from '../redux/loginSignupReducer';
+import { setAction, setInput, setSignupErrorMessage } from '../redux/loginSignupReducer';
 import axios from 'axios';
 import { ToastContainer, toast,  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -147,8 +147,11 @@ const LoginSignup = () => {
               </div>
             ) : null}
             <div className="submit-container">
-              <button type="submit" className={action === "Login" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Sign Up')} >Register</button>
-              <button type="submit" className={action === "Sign Up" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Login')}  >Login</button>
+              <label type="submit" className={action === "Login" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Sign Up')} >Register</label>
+              <label type="submit" className={action === "Sign Up" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Login')}  >Login</label>
+            </div>
+            <div className='buttonSubmit'>
+                <button className='button'>Submit</button>
             </div>
           </form>
         </div>
