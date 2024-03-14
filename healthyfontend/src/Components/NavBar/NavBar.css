@@ -52,6 +52,13 @@
     align-items: center;
     
 }
+.nav-login p{
+  
+    margin: 10px 10px;
+    font-size: large;
+    font-weight: 900;
+    text-transform: capitalize;
+}
 .nav-login button{
     width: 157px;
     height: 58px;

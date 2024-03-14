@@ -21,7 +21,9 @@ const initialState = {
     emailLogin:'',
     passwordLogin:''
 
-  }
+  },
+  isAuthenticated : false,
+  token: null
 };
 
 // Registeraion Slice 
@@ -41,10 +43,23 @@ const loginSignupSlice = createSlice({
         },
         setLoginErrorMessage:(state,action) =>{
             state.loginErrorMessage = action.payload
-        }
-    },
-})
+        },
+        setToken(state, action){
+          state.token =  action.payload;
+          state.isAuthenticated = true;
 
-export const { setAction, setInput, setSignupErrorMessage, setLoginErrorMessage} = loginSignupSlice.actions;
+        },
+        logout(state){
+          state.token = null;
+          state.isAuthenticated = false;
+        }
+       
+    },
+});
+
+export const { setAction, setInput, setSignupErrorMessage, setLoginErrorMessage,
+                setToken,
+                logout
+              } = loginSignupSlice.actions;
 
 export default loginSignupSlice.reducer;

@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Css/LoginSignup.css';
 import userIcon from '/person.png';
 import emailIcon from '/email.png';
 import passwordIcon from '/password.png';
 import Banner from '../Components/Banner/Banner';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAction, setInput, setSignupErrorMessage } from '../redux/loginSignupReducer';
+import { setAction, setInput, setLoginErrorMessage, setSignupErrorMessage } from '../redux/loginSignupReducer';
 import axios from 'axios';
 import { ToastContainer, toast,  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const LoginSignup = () => {
+  const navigation = useNavigate();
+
   const dispatch = useDispatch();
   const {
     action,
@@ -27,82 +31,109 @@ const LoginSignup = () => {
 
   const handleActionChange = (newAction) => {
     dispatch(setAction(newAction));
+    dispatch(setSignupErrorMessage(''));
+    dispatch(setLoginErrorMessage(''));
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     dispatch(setInput({ name, value }));
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (passwordSignup !== confirmPassword) {
-      console.log(dispatch(setSignupErrorMessage({ confirmPassword: 'Passwords do not match' })));
-        toast.error('Passweord not match',{
-          autoClose: 7000,
-          toastId: 'server-error-toast',
-          position: "top-center"
-        })
-      
+      console.log(setSignupErrorMessage({ confirmPassword: 'Passwords do not match' }));
+      toast.error('Passwords do not match', { autoClose: 7000, toastId: 'server-error-toast', position: "top-center" });
       return;
     }
+    
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/auth/signup/', {
         first_name: firstName,
         last_name: lastName,
         email: emailSignup,
         password: passwordSignup
-      }, {
-        headers: { 'Content-Type': 'application/json' }
-      });
+      }, { headers: { 'Content-Type': 'application/json' } });
+      
       if (response.status === 200) {
-
-        // Registerion Sucess Alert
-        toast.success(response.data.messages,{
-          autoClose: 7000,
-          toastId: 'success',
-          position: "top-center"
-        })
-        handleActionChange('Login')
-        console.log(response.data);
-
-        // Reset form fields to empty strings
-        dispatch(setInput({ name: 'firstName', value: '' }));
-        dispatch(setInput({ name: 'lastName', value: '' }));
-        dispatch(setInput({ name: 'emailSignup', value: '' }));
-        dispatch(setInput({ name: 'passwordSignup', value: '' }));
-        dispatch(setInput({ name: 'confirmPassword', value: '' }));
-
+        toast.success(response.data.messages, { autoClose: 7000, toastId: 'success', position: "top-center" });
+        handleActionChange('Login');
+        
+        const fieldsToReset = ['firstName', 'lastName', 'emailSignup', 'passwordSignup', 'confirmPassword'];
+        fieldsToReset.forEach(field => dispatch(setInput({ name: field, value: '' })));
       } else if (response.status === 400) {
-        dispatch(setSignupErrorMessage(response.data.messages))
+        dispatch(setSignupErrorMessage(response.data.messages));
       } else {
-        console.log('failed');
+        console.log('Failed');
       }
     } catch (error) {
       console.error('Error:', error);
-
-      if (!error.response){
-        toast.error('Failed to connect to the server. Please try again later.',{
-          autoClose: 7000,
-          toastId: 'server-error-toast',
-          position: "top-center"
-        })
-      }
-      if (error.response && error.response.data) {
-        dispatch(setSignupErrorMessage(error.response.data.messages));
-      }
+      handleErrors(error);
     }
   };
+  
+  const checkTokenInLocalStorage = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      console.log('Token found in localStorage:', token);
+      navigation('/');
+    } else {
+      console.log('Token not found in localStorage');
+    }
+  };
+  
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', 
+      { email: emailLogin, password: passwordLogin });
+  
+      if (response.status === 200) {
+        const { access_token } = response.data;
+        console.log(access_token);
+        localStorage.setItem('token', access_token);
+        navigation('/');
+        dispatch(setInput({ name: 'emailLogin', value: '' }));
+        dispatch(setInput({ name: 'passwordLogin', value: '' }));
+
+        // Scroll to top After Login
+        window.scrollTo(0,0)
+      } else if (response.status === 400) {
+        dispatch(setLoginErrorMessage(response.data.message));
+      } else {
+        console.log('Login failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      handleErrors(error);
+    }
+  };
+  
+  const handleErrors = (error) => {
+    if (!error.response) {
+      toast.error('Failed to connect to the server. Please try again later.', { autoClose: 7000, toastId: 'server-error-toast', position: "top-center" });
+    } else if (error.response && error.response.data) {
+      dispatch(setSignupErrorMessage(error.response.data.messages));
+    }
+  };
+  
+  useEffect(() => {
+    checkTokenInLocalStorage();
+  }, []);
+  
+  
 
 
-
+  
   return (
     <>
       <div className='login-container'>
         <Banner />
         <div className="login">
         <ToastContainer />
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={action === 'Login'? handleLogin:handleSubmit} >
             <div className="header">
               <div className="text">{action}</div>
               <div className="underline"></div>
@@ -126,17 +157,18 @@ const LoginSignup = () => {
               <div className="input">
                 <img src={emailIcon} alt="" />
                 <input type="email" name={action === "Login" ? "emailLogin" : "emailSignup"} placeholder='Email' value={action === "Login" ? emailLogin : emailSignup} onChange={handleInputChange} />
-                <span className='error'>{action === "Login" ? loginErrorMessage.email : signupErrorMessage.email}</span>
+                <span className='error'>{action === "Sign Up" ?  signupErrorMessage.email:loginErrorMessage.details}</span>
+                
               </div>
               <div className="input">
                 <img src={passwordIcon} alt="" />
                 <input type="password" name={action === "Login" ? "passwordLogin" : "passwordSignup"} placeholder='Password' value={action === "Login" ? passwordLogin : passwordSignup} onChange={handleInputChange} />
-                <span className='error'>{action === "Login" ? loginErrorMessage.password : signupErrorMessage.password}</span>
+                <span className='error'>{action === "Sign Up" ?  signupErrorMessage.password:loginErrorMessage.password } </span>
               </div>
               {action === "Login" ? null : (
                 <div className="input">
                   <img src={passwordIcon} alt="" />
-                  <input type="password" name="confirmPassword" placeholder='Confirm Password' value={confirmPassword} onChange={handleInputChange} />
+                  <input  type="password" name="confirmPassword" placeholder='Confirm Password' value={confirmPassword} onChange={handleInputChange} />
                   <span className='error'>{signupErrorMessage.password}</span>
                 </div>
               )}
@@ -148,7 +180,7 @@ const LoginSignup = () => {
             ) : null}
             <div className="submit-container">
               <label type="submit" className={action === "Login" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Sign Up')} >Register</label>
-              <label type="submit" className={action === "Sign Up" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Login')}  >Login</label>
+              <label type="submit" className={action === "Sign Up" ? "submit gray" : "submit green"} onClick={() => handleActionChange('Login') }>Login</label>
             </div>
             <div className='buttonSubmit'>
                 <button className='button'>Submit</button>
