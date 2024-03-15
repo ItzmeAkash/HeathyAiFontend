@@ -14,6 +14,8 @@ const Services = () => {
 
     <div  className='service-container'>
        <h1>Our Services</h1>
+
+       { /* // Food recommednation container */}
        <div className="card-container">
        <div  className="card">
        <img src={foodrecomdimage} alt="" />
@@ -25,6 +27,10 @@ const Services = () => {
 
        </div>
        <div className="card">
+       { /*  Food Recipe Generator container */}
+       
+      
+
        <img src={foodrecipeimage} alt="" />
        <h2>Food Recipe Generator</h2>
        <p>"Explore tailored, nutritious recipes for your day with our recipe generator, making it effortless to savor delicious and healthy meals."</p>
@@ -35,6 +41,7 @@ const Services = () => {
        
        </div>
        <div className="card">
+       { /* // Food image Classification container */}
        <img src={foodclasimage} alt="" />
        <h2 id='foodimage'>Food Classification</h2>
        <p>"Explore precise food identification with our advanced image classification technology."</p>

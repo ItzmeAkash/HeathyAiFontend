@@ -1,6 +1,7 @@
 import './App.css'
+import {Fragment} from 'react'
 import NavBar from './Components/NavBar/NavBar'
-import {BrowserRouter,Routes,Route, useNavigate} from 'react-router-dom'
+import {BrowserRouter,Routes,Route,} from 'react-router-dom'
 import Home from './Pages/Home'
 import DietRecomd from './Pages/DietRecomd'
 import FoodImage from './Pages/FoodImage'
@@ -10,7 +11,7 @@ import Services from './Pages/MainServices'
 import ContactUs from './Pages/ContactUs'
 import Footer from './Components/Footer/Footer'
 import LoginSignup from './Pages/LoginSignup'
-import {  useSelector } from 'react-redux'
+import RequireAuth from './RequireAuth';
 
 function App() {
   const bannerTexts = {
@@ -20,13 +21,11 @@ function App() {
     recipe: "“Love yourself enough to live a healthy lifestyle”",
     bannerFoodImageText : "“An apple a day keeps the doctor away”"
   };
-  
-  const isAuthenticated = useSelector(state => state.isAuthenticated);
 
- 
+  
   return (
     <>
-    
+
     <BrowserRouter>
     <NavBar/>
     <Routes>
@@ -34,13 +33,17 @@ function App() {
       <Route path='/aboutus' element={<AboutUs text={bannerTexts.bannerFoodImageText}/>}/>
       <Route path='/service' element={<Services text={bannerTexts.service}/>}/>
       <Route path='/contact' element={<ContactUs text={bannerTexts.bannerFoodImageText} />}/>
-      <Route path='/dietrecomdention' element={<DietRecomd text={bannerTexts.health}/>}/>
-      <Route path='/recipe' element={<Recipe text={bannerTexts.recipe}/>}/>
-      <Route path='/foodimageclassification' element={<FoodImage text={bannerTexts.bannerFoodImageText}/>}/>
-      <Route path='/Login' element={<LoginSignup/>}/>
-      
+      <Route path="/" element={<RequireAuth /> }>
+          <Route  path='dietrecomdention' element={<DietRecomd text={bannerTexts.health}/>}/>
+          <Route path='recipe' element={<Recipe text={bannerTexts.recipe}/>}/>
+          <Route path='foodimageclassification' element={<FoodImage text={bannerTexts.bannerFoodImageText}/>}/>
+         
+      </Route>
+          <Route path='/Login' element={<LoginSignup/>}/>
+          
      </Routes>
-     <Footer/>   
+     <Footer/>
+       
     </BrowserRouter>
     </>
   )

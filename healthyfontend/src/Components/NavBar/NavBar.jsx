@@ -23,6 +23,8 @@ const NavBar = () => {
     }
   },); 
 
+  // Fetching Logined User Details
+
   const fetchUserDetails = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -39,16 +41,20 @@ const NavBar = () => {
       console.error('Error fetching user details:', error);
     }
   };
-
+  
+  // MenuToogle Bar
   const handleMenuToggle = () => {
     setMenuVisible(!isMenuVisible);
   };
-
+  
+  // Responsive Menu 
   const handleMenuItemClick = (menuItem) => {
     setMenu(menuItem);
     setMenuVisible(false);
   };
 
+
+  // Logout handled
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
@@ -84,7 +90,8 @@ const NavBar = () => {
             {menu === 'Contact Us' ? <hr /> : <></>}
           </li>
         </ul>
-
+        
+        {/* """Check if the user has the token. If true, display the user name and logout button""" */}
         <div className="nav-login">
           {localStorage.getItem('token') ? (
             <>

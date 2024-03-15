@@ -10,8 +10,7 @@ const Recipe = (props) => {
   };
 
   const handleGenerate = () => {
-    // Here, you can use inputValue to perform further actions,
-    // such as generating a recipe based on the input value
+   // Spliting the input value by comma
     const inputDataArray = inputValue.split(",").map((item) => item.trim());
     console.log(inputDataArray);
   };

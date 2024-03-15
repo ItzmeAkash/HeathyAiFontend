@@ -4,7 +4,8 @@ import './Css/FoodImage.css'
 
 const FoodImage = (props) => {
   const [image, setImage] =  useState(null);
-
+  
+  //Image Uploading Function
   const handleImageUpload = (event) =>{
     const selectedImage = event.target.files[0];
    
