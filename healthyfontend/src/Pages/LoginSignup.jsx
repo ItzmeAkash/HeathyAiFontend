@@ -174,13 +174,10 @@ const LoginSignup = () => {
   const checkTokenInLocalStorage = () => {
     const token = localStorage.getItem("token");
     if (token) {
-      console.log("Token found in localStorage:", token);
       navigation("/");
-    } else {
-      console.log("Token not found in localStorage");
     }
   };
-
+  
   useEffect(() => {
     checkTokenInLocalStorage();
   }, []);
