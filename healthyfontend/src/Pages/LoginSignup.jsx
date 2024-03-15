@@ -34,18 +34,20 @@ const LoginSignup = () => {
     signupErrorMessage,
     loginErrorMessage,
   } = useSelector((state) => state.loginSignup);
-
+ 
+ // Sign and Login Actions
   const handleActionChange = (newAction) => {
     dispatch(setAction(newAction));
     dispatch(setSignupErrorMessage(""));
     dispatch(setLoginErrorMessage(""));
   };
-
+ // Fetching the input values
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     dispatch(setInput({ name, value }));
   };
 
+  // Registration Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -59,6 +61,7 @@ const LoginSignup = () => {
     }
 
     try {
+      // User Registration 
       const response = await axios.post(
         "http://127.0.0.1:8000/api/auth/signup/",
         {
@@ -77,6 +80,8 @@ const LoginSignup = () => {
           position: "top-center",
         });
         handleActionChange("Login");
+
+        // Clearing all the input values
         const fieldsToReset = [
           "firstName",
           "lastName",
@@ -98,6 +103,7 @@ const LoginSignup = () => {
     }
   };
 
+ // Login handling
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -109,15 +115,21 @@ const LoginSignup = () => {
       if (response.status === 200) {
         const { access_token } = response.data;
         console.log(access_token);
+
+        // Storing Token in Local Storage
         localStorage.setItem("token", access_token);
         dispatch(setToken(access_token));
         dispatch(setAuthenticated(true))
+
+        // Login SuccessFull Redirect to Home page
         navigation("/");
+
+        // Clear the all Value in Login input Fields
         dispatch(setInput({ name: "emailLogin", value: "" }));
         dispatch(setInput({ name: "passwordLogin", value: "" }));
-        window.scrollTo(0, 0); // Scroll to top after login
+        window.scrollTo(0, 0); 
       } else if (response.status === 401) {
-        dispatch(setLoginErrorMessage(response.data.message)); // Set login error message
+        dispatch(setLoginErrorMessage(response.data.message)); 
       } else {
         console.log("Login failed");
       }
@@ -126,18 +138,38 @@ const LoginSignup = () => {
       handleErrors(error);
     }
   };
+
+  // Error Handling
   const handleErrors = (error) => {
+    const commonToastSettings = {
+      autoClose: 7000,
+      position: "top-center",
+    };
+  
     if (!error.response) {
       toast.error("Failed to connect to the server. Please try again later.", {
-        autoClose: 7000,
+        ...commonToastSettings,
         toastId: "server-error-toast",
-        position: "top-center",
       });
     } else if (error.response && error.response.data) {
-      dispatch(setLoginErrorMessage(error.response.data.message));
-      console.log(dispatch(setLoginErrorMessage(error.response.data.message)));
+      const errorMessage = error.response.data.message;
+      const specificToastSettings = {
+        ...commonToastSettings,
+        toastId: errorMessage === "User not found" ? "user-not-found-toast" : "server-error-toast",
+      };
+  
+      if (errorMessage === "User not found") {
+        toast.error("User not found. Please sign up.", specificToastSettings);
+        handleActionChange("Sign Up");
+      } else {
+        dispatch(setLoginErrorMessage(errorMessage));
+        toast.error(errorMessage, specificToastSettings);
+        console.log(errorMessage);
+      }
     }
   };
+  
+  
 
   const checkTokenInLocalStorage = () => {
     const token = localStorage.getItem("token");
