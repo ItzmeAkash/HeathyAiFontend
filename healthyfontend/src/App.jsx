@@ -1,6 +1,6 @@
 import './App.css'
 import NavBar from './Components/NavBar/NavBar'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import {BrowserRouter,Routes,Route, useNavigate} from 'react-router-dom'
 import Home from './Pages/Home'
 import DietRecomd from './Pages/DietRecomd'
 import FoodImage from './Pages/FoodImage'
@@ -10,6 +10,8 @@ import Services from './Pages/MainServices'
 import ContactUs from './Pages/ContactUs'
 import Footer from './Components/Footer/Footer'
 import LoginSignup from './Pages/LoginSignup'
+import {  useSelector } from 'react-redux'
+
 function App() {
   const bannerTexts = {
     home: '"Prioritize a healthy lifestyle"',
@@ -18,9 +20,13 @@ function App() {
     recipe: "“Love yourself enough to live a healthy lifestyle”",
     bannerFoodImageText : "“An apple a day keeps the doctor away”"
   };
+  
+  const isAuthenticated = useSelector(state => state.isAuthenticated);
 
+ 
   return (
     <>
+    
     <BrowserRouter>
     <NavBar/>
     <Routes>

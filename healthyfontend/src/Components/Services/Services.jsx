@@ -6,6 +6,7 @@ import foodclasimage from '/foodimageidentify.webp'
 import { Link } from 'react-router-dom'
 
 const Services = () => {
+  
   return (
 
     <>
@@ -27,7 +28,9 @@ const Services = () => {
        <img src={foodrecipeimage} alt="" />
        <h2>Food Recipe Generator</h2>
        <p>"Explore tailored, nutritious recipes for your day with our recipe generator, making it effortless to savor delicious and healthy meals."</p>
-       <Link style={{textDecoration:'none'}} to='/recipe'><button>Click Here</button></Link>
+       <Link style={{textDecoration:'none'}} to='/recipe' onClick={()=>{
+         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+       }}><button>Click Here</button></Link>
 
        
        </div>
@@ -35,13 +38,15 @@ const Services = () => {
        <img src={foodclasimage} alt="" />
        <h2 id='foodimage'>Food Classification</h2>
        <p>"Explore precise food identification with our advanced image classification technology."</p>
-       <Link style={{textDecoration:'none'}} to='/foodimageclassification'><button style={{marginTop:'41px'}}>Click Here</button></Link>
+       <Link style={{textDecoration:'none'}} to='/foodimageclassification'><button style={{marginTop:'41px'}}
+       onClick={()=>{
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+       }}>Click Here</button></Link>
     
         
        </div>    
        </div>
 
-       
 
     </div>
     </section>

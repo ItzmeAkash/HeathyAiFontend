@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import './Css/DietRecomd.css'
 import Banner from '../Components/Banner/Banner'
-import { useDispatch, useSelector} from 'react-redux'
+
 
 const DietRecomd = (props) => {
+
   const [formData, setFormData] = useState({
     age: '',
     gender: 'male',
@@ -26,6 +27,7 @@ const DietRecomd = (props) => {
     console.log(formData); // This will log the form data to the console
     // You can use fetch or axios to send formData to your backend
   };
+
   return (
   <>
       <div className='dietrecomd-contrainer'>

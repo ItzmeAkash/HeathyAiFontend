@@ -5,8 +5,12 @@ import axios from 'axios';
 
 import logo from '/logo.png';
 import './NavBar.css';
+import { logout } from '../../redux/authSlice';
+import { useDispatch } from 'react-redux';
+import { setAuthenticated } from '../../redux/loginSignupReducer';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const [menu, setMenu] = useState("Home");
   const [isMenuVisible, setMenuVisible] = useState(false);
   const [username, setUsername] = useState('');
@@ -49,6 +53,8 @@ const NavBar = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     setUsername('');
+    dispatch(logout());
+    console.log(dispatch(logout()));
     navigation('/login');
   };
 

@@ -1,32 +1,42 @@
-import React, { useState } from 'react';
-import Banner from '../Components/Banner/Banner';
-import './Css/Recipe.css';
+import React, { useState } from "react";
+import Banner from "../Components/Banner/Banner";
+import "./Css/Recipe.css";
 
 const Recipe = (props) => {
-  const [inputValue, setInputValues] = useState('');
+  const [inputValue, setInputValues] = useState("");
 
-  const handleInputChange = (event) =>{
-    setInputValues(event.target.value)
-  }
+  const handleInputChange = (event) => {
+    setInputValues(event.target.value);
+  };
 
   const handleGenerate = () => {
     // Here, you can use inputValue to perform further actions,
     // such as generating a recipe based on the input value
-    const inputDataArray = inputValue.split(',').map(item => item.trim());
+    const inputDataArray = inputValue.split(",").map((item) => item.trim());
     console.log(inputDataArray);
   };
 
   return (
-    <div className='recipe-container'>
-      <Banner text={props.text}/>
+    <div className="recipe-container">
+      <Banner text={props.text} />
       <div className="recipe-main">
         <div className="recipe">
           <h1>Meet Your Personal AI-Powered Kitchen Assistant</h1>
-          <p>Simply type a recipe idea or some ingredients you have on hand and DishGen's AI will instantly generate an all-new recipe on demand...</p>
+          <p>
+            Simply type a recipe idea or some ingredients you have on hand and
+            DishGen's AI will instantly generate an all-new recipe on demand...
+          </p>
         </div>
         <div className="recipe-input">
-          <input type="text" placeholder='Chicken, Tomato, etc...' value={inputValue} onChange={handleInputChange}/>
-          <button type='submit' onClick={handleGenerate}>Generate</button>
+          <input
+            type="text"
+            placeholder="Chicken, Tomato, etc..."
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <button type="submit" onClick={handleGenerate}>
+            Generate
+          </button>
         </div>
         <div className="recipe-result">
           <h1>Food Name</h1>
@@ -37,7 +47,6 @@ const Recipe = (props) => {
                 <li>Sugar</li>
                 <li>Apple</li>
                 <li>Apple</li>
-  
               </ol>
             </div>
             <div className="recipe-instructions">
@@ -57,6 +66,6 @@ const Recipe = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default Recipe;
