@@ -12,7 +12,8 @@ import ContactUs from './Pages/ContactUs'
 import Footer from './Components/Footer/Footer'
 import LoginSignup from './Pages/LoginSignup'
 import RequireAuth from './RequireAuth';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const bannerTexts = {
     home: '"Prioritize a healthy lifestyle"',
@@ -27,6 +28,7 @@ function App() {
     <>
 
     <BrowserRouter>
+    
     <NavBar/>
     <Routes>
       <Route path='/' element={<Home text={bannerTexts.home} />}/>
@@ -34,6 +36,7 @@ function App() {
       <Route path='/service' element={<Services text={bannerTexts.service}/>}/>
       <Route path='/contact' element={<ContactUs text={bannerTexts.bannerFoodImageText} />}/>
       <Route path="/" element={<RequireAuth /> }>
+
           <Route  path='dietrecomdention' element={<DietRecomd text={bannerTexts.health}/>}/>
           <Route path='recipe' element={<Recipe text={bannerTexts.recipe}/>}/>
           <Route path='foodimageclassification' element={<FoodImage text={bannerTexts.bannerFoodImageText}/>}/>
@@ -43,7 +46,7 @@ function App() {
           
      </Routes>
      <Footer/>
-       
+     <ToastContainer />
     </BrowserRouter>
     </>
   )

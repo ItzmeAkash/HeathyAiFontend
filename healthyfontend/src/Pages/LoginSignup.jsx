@@ -19,7 +19,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
-
   const navigation = useNavigate();
   const dispatch = useDispatch();
   const {
@@ -35,13 +34,14 @@ const LoginSignup = () => {
     loginErrorMessage,
   } = useSelector((state) => state.loginSignup);
  
- // Sign and Login Actions
+  // Sign and Login Actions
   const handleActionChange = (newAction) => {
     dispatch(setAction(newAction));
     dispatch(setSignupErrorMessage(""));
     dispatch(setLoginErrorMessage(""));
   };
- // Fetching the input values
+
+  // Fetching the input values
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     dispatch(setInput({ name, value }));
@@ -99,11 +99,22 @@ const LoginSignup = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-      handleErrors(error);
+      
+      if(!error.response){
+        toast.error('Failed to connect to the server. Please try again later.',{
+          autoClose: 7000,
+          toastId: 'server-error-toast',
+          position: "top-center"
+        })
+      }
+      if(error.response && error.response.data){
+        dispatch(setSignupErrorMessage(error.response.data.messages));
     }
+  }
+    
   };
 
- // Login handling
+  // Login handling
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -135,12 +146,12 @@ const LoginSignup = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-      handleErrors(error);
+      handleLoginErrors(error);
     }
   };
 
   // Error Handling
-  const handleErrors = (error) => {
+  const handleLoginErrors = (error) => {
     const commonToastSettings = {
       autoClose: 7000,
       position: "top-center",
@@ -161,6 +172,8 @@ const LoginSignup = () => {
       if (errorMessage === "User not found") {
         toast.error("User not found. Please sign up.", specificToastSettings);
         handleActionChange("Sign Up");
+        dispatch(setInput({ name: "emailLogin", value: "" }));
+        dispatch(setInput({ name: "passwordLogin", value: "" }));
       } else {
         dispatch(setLoginErrorMessage(errorMessage));
         toast.error(errorMessage, specificToastSettings);
@@ -169,8 +182,6 @@ const LoginSignup = () => {
     }
   };
   
-  
-
   const checkTokenInLocalStorage = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -234,9 +245,9 @@ const LoginSignup = () => {
                   onChange={handleInputChange}
                 />
                 <span className="error">
-                  {action === "Sign Up"
-                    ? signupErrorMessage.email
-                    : loginErrorMessage.email}
+                  {
+                     signupErrorMessage.email
+                    }
                 </span>
               </div>
               <div className="input">
@@ -249,9 +260,8 @@ const LoginSignup = () => {
                   onChange={handleInputChange}
                 />
                 <span className="error">
-                  {action === "Sign Up"
-                    ? signupErrorMessage.password
-                    : loginErrorMessage.password}
+                  {signupErrorMessage && signupErrorMessage.password
+                    }
                 </span>
               </div>
               {action === "Login" ? null : (

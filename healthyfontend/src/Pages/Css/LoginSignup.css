@@ -110,7 +110,9 @@
     position: absolute;
     bottom: -2px;
     left: 83px;
-}.button{
+
+}
+.button{
     display: flex;
     justify-content: center;
     align-items: center;

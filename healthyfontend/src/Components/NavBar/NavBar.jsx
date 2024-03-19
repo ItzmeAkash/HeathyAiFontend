@@ -55,13 +55,24 @@ const NavBar = () => {
 
 
   // Logout handled
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    setUsername('');
-    dispatch(logout());
-    console.log(dispatch(logout()));
-    navigation('/login');
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.post('http://127.0.0.1:8000/api/auth/logout/', null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
+      setUsername('');
+      dispatch(logout());
+      navigation('/login');
+    } catch (error) {
+      console.error('Error logging out:', error);
+      // Handle error as needed
+    }
   };
 
   return (
