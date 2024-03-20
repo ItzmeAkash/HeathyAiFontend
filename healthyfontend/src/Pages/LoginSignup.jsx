@@ -17,6 +17,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config/config";
 
 const LoginSignup = () => {
   const navigation = useNavigate();
@@ -63,7 +64,7 @@ const LoginSignup = () => {
     try {
       // User Registration 
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/auth/signup/",
+        `${API_BASE_URL}/auth/signup/`,
         {
           first_name: firstName,
           last_name: lastName,
@@ -119,7 +120,7 @@ const LoginSignup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/auth/login/",
+        `${API_BASE_URL}/auth/login/`,
         { email: emailLogin, password: passwordLogin }
       );
 

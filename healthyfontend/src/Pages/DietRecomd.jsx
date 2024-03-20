@@ -5,24 +5,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setErrorMessage, setInput } from '../redux/dietRecomdSlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config/config';
 
 const DietRecomd = ({ text }) => {
   const dispatch = useDispatch();
-  const navigation = useNavigate();
   const { age, gender, weight, height, physicalActivity, goal, errorMessage } = useSelector((state) => state.diet);
   const [responseData, setResponseData] = useState(null);
 
+  // Fetaching Input Details
   const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
     dispatch(setInput({ name, value: value.toString() }));
   }, [dispatch]);
+  
 
+  // handleSubmit
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post("http://127.0.0.1:8000/api/service/dietrecommendation/", {
+      const response = await axios.post(`${API_BASE_URL}/service/dietrecommendation/`, {
         age, gender, weight, height, physical_activity: physicalActivity, goal
       }, {
         headers: {
@@ -50,6 +53,7 @@ const DietRecomd = ({ text }) => {
     dispatch(setErrorMessage({}));
   }, [dispatch]);
 
+  // Displaying the Response 
   const renderRecommendedItems = () => {
     const meals = ['breakfast', 'lunch', 'snacks', 'dinner'];
 
@@ -66,6 +70,7 @@ const DietRecomd = ({ text }) => {
       </div>
     ));
   };
+
 
   const handleReturnToForm = () => {
     setResponseData(null);

@@ -1,19 +1,44 @@
 import React, { useState } from "react";
 import Banner from "../Components/Banner/Banner";
 import "./Css/Recipe.css";
+import { setInput } from "../redux/recipeGenerator";
+import { useDispatch, useSelector } from "react-redux";
+import { API_BASE_URL } from "../config/config";
+import axios from "axios";
 
 const Recipe = (props) => {
-  const [inputValue, setInputValues] = useState("");
+  const { recipe } = useSelector((state) => state.recipe);
+  const dispatch = useDispatch();
+  const [responseData, setResponseData] = useState(null);
 
-  const handleInputChange = (event) => {
-    setInputValues(event.target.value);
+
+  const handleInputChange = (e) => {
+    const { value } = e.target;
+    dispatch(setInput({ name: 'recipe', value }));
   };
 
-  const handleGenerate = () => {
-   // Spliting the input value by comma
-    const inputDataArray = inputValue.split(",").map((item) => item.trim());
-    console.log(inputDataArray);
+  const handleGenerate = async(e) => {
+    e.preventDefault();
+    try {
+       const token =  localStorage.getItem('token'); 
+       const response =  await axios.post(`${API_BASE_URL}/service/foodrecipegenerator/`,{
+        recipes:recipe.split(",")
+       },{
+        headers:{
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        }
+       });
+       console.log(response.data);
+       setResponseData(response.data);
+      
+    } catch (error) {
+      
+    }
+    
   };
+
+
 
   return (
     <div className="recipe-container">
@@ -30,7 +55,7 @@ const Recipe = (props) => {
           <input
             type="text"
             placeholder="Chicken, Tomato, etc..."
-            value={inputValue}
+            value={recipe}
             onChange={handleInputChange}
           />
           <button type="submit" onClick={handleGenerate}>
@@ -38,27 +63,12 @@ const Recipe = (props) => {
           </button>
         </div>
         <div className="recipe-result">
-          <h1>Food Name</h1>
+          {/* <h1>Food Name</h1> */}
           <div className="recipeoutputs">
-            <div className="recipe-ingredients">
-              <h2>Ingredients</h2>
-              <ol start="1">
-                <li>Sugar</li>
-                <li>Apple</li>
-                <li>Apple</li>
-              </ol>
-            </div>
+
             <div className="recipe-instructions">
-              <h2>Instructions</h2>
-              <ol start="1">
-                <li>Sugar</li>
-                <li>Apple</li>
-                <li>Apple</li>
-                <li>Apple</li>
-                <li>Apple</li>
-                <li>Apple</li>
-                <li>Apple</li>
-              </ol>
+              { responseData ? responseData.response: null }
+             
             </div>
           </div>
         </div>

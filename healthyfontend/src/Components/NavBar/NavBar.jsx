@@ -6,29 +6,32 @@ import axios from 'axios';
 import logo from '/logo.png';
 import './NavBar.css';
 import { logout } from '../../redux/authSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setAuthenticated } from '../../redux/loginSignupReducer';
-
+import { API_BASE_URL } from '../../config/config';
 const NavBar = () => {
   const dispatch = useDispatch();
   const [menu, setMenu] = useState("Home");
   const [isMenuVisible, setMenuVisible] = useState(false);
   const [username, setUsername] = useState('');
   const navigation = useNavigate();
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       fetchUserDetails();
     }
-  },); 
+  });
+  
 
   // Fetching Logined User Details
 
   const fetchUserDetails = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://127.0.0.1:8000/api/auth/profile', {
+      const response = await axios.get(`${API_BASE_URL}/auth/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -58,7 +61,7 @@ const NavBar = () => {
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://127.0.0.1:8000/api/auth/logout/', null, {
+      await axios.post(`${API_BASE_URL}/auth/logout/`, null, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

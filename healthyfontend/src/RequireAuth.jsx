@@ -2,16 +2,16 @@ import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 
-const RequireAuth = () => {
-    const token = useSelector((state) => state.loginSignup.token);
-    const location = useLocation();
+const RequireAuth = ({ children }) => {
+  const isAuthenticated = useSelector((state) => state.loginSignup.isAuthenticated);
+  const location = useLocation();
 
+  if (!isAuthenticated) {
+    // Redirect to login if not authenticated
+    return <Navigate to="/login" replace state={{ from: location }} />;
+  }
 
-    return (
-        token
-            ? <Outlet />
-            :<Navigate to="/login" state={{ from: location }} replace />
-    );
+  return children || <Outlet />; // Render children or nested routes within
 };
 
 export default RequireAuth;
