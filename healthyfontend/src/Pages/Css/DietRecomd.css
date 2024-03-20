@@ -1,6 +1,6 @@
 .dietrecomd {
     width: 100%;
-    height: 546px;
+    height: auto;
 }
 
 .dietrecomd h1 {
@@ -13,7 +13,7 @@
 
         background: #f6f6f699;
         width: 26%;
-        height: 444px;
+        height: auto;
         margin: 0 auto;
         border-radius: 20px;
 
@@ -26,7 +26,7 @@
 }
 
 .dietrecomd-form form input {
-    width: calc(85% - 22px);
+    width: calc(59% - 22px);
     height: 32px;
     margin-bottom: 9px;
     flex: 0 0 200px;
@@ -68,6 +68,51 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+
+.error-diet {
+    color: red;
+    font-size: 9px;
+}
+.dietresult-h3{
+    padding: 0px 16px;
+
+}
+.dietresult-li{
+    margin: 0px 58px;
+}
+
+.diet-result-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 125px;
+        height: 52px;
+        color: #fff;
+        background: #16890c;
+        border-radius: 28px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        /* top: 17px; */
+        border: none;
+    }
+.diet-result-button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dietrecomd-result-container{
+    margin-bottom: 12px;
+}
+
+.dietresult-h2
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+}
 /*Resonsive styles**/
 
 /* Small devices (phones, 600px and down) */

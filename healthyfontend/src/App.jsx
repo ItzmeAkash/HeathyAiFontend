@@ -14,6 +14,7 @@ import LoginSignup from './Pages/LoginSignup'
 import RequireAuth from './RequireAuth';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DietResult from './Pages/DietResult'
 function App() {
   const bannerTexts = {
     home: '"Prioritize a healthy lifestyle"',
@@ -42,6 +43,8 @@ function App() {
           <Route path='foodimageclassification' element={<FoodImage text={bannerTexts.bannerFoodImageText}/>}/>
          
       </Route>
+      <Route path='/dietresult' element={<DietResult text={bannerTexts.health}/>}/>
+          
           <Route path='/Login' element={<LoginSignup/>}/>
           
      </Routes>
