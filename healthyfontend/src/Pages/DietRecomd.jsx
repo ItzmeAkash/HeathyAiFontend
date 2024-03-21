@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import './Css/DietRecomd.css';
 import Banner from '../Components/Banner/Banner';
 import { useDispatch, useSelector } from 'react-redux';
-import { setErrorMessage, setInput } from '../redux/dietRecomdSlice';
+import { setErrorMessage, setInput } from '../feature/dietRecomdSlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../config/config';

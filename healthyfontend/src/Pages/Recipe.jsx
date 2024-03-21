@@ -5,41 +5,43 @@ import { setInput } from "../feature/recipeGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { API_BASE_URL } from "../config/config";
 import axios from "axios";
+import {  ClipLoader  } from "react-spinners"; 
 
 const Recipe = (props) => {
   const { recipe } = useSelector((state) => state.recipe);
   const dispatch = useDispatch();
   const [responseData, setResponseData] = useState(null);
-
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { value } = e.target;
     dispatch(setInput({ name: 'recipe', value }));
   };
 
-  const handleGenerate = async(e) => {
+  const handleGenerate = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-       const token =  localStorage.getItem('token'); 
-       const response =  await axios.post(`${API_BASE_URL}/service/foodrecipegenerator/`,{
-        recipes:recipe.split(",")
-       },{
-        headers:{
+      const token = localStorage.getItem('token');
+      const response = await axios.post(`${API_BASE_URL}/service/foodrecipegenerator/`, {
+        recipes: recipe.split(",")
+      }, {
+        headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         }
-       });
-       console.log(response.data);
-       setResponseData(response.data);
-       dispatch(setInput({ name: 'recipe', value: '' }));
-      
+      });
+      console.log(response.data);
+      setResponseData(response.data);
+      dispatch(setInput({ name: 'recipe', value: '' }));
+
     } catch (error) {
-      
+
+    } finally {
+      setLoading(false); 
     }
-    
+
   };
-
-
 
   return (
     <div className="recipe-container">
@@ -64,14 +66,17 @@ const Recipe = (props) => {
           </button>
         </div>
         <div className="recipe-result">
-          {/* <h1>Food Name</h1> */}
-          <div className="recipeoutputs">
-
-            <div className="recipe-instructions">
-              { responseData ? responseData.response: null }
-             
+          {loading ? ( 
+            <div className="loading-animation">
+              <ClipLoader  color={"#E0FFDE"} loading={loading} size={30} /> 
             </div>
-          </div>
+          ) : (
+            <div className="recipeoutputs">
+              <div className="recipe-instructions">
+                {responseData ? responseData.response : null}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

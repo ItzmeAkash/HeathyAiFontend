@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import Banner from '../Components/Banner/Banner'
 import './Css/FoodImage.css'
+import { useDispatch, useSelector } from 'react-redux';
 
 const FoodImage = (props) => {
+  const dispatch = useDispatch();
+  // const { IMAGWE } = useSelector((state) => state.recipe);
+
   const [image, setImage] =  useState(null);
   
   //Image Uploading Function

@@ -5,9 +5,9 @@ import axios from 'axios';
 
 import logo from '/logo.png';
 import './NavBar.css';
-import { logout } from '../../redux/authSlice';
+import { logout } from '../../feature/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAuthenticated } from '../../redux/loginSignupReducer';
+import { setAuthenticated } from '../../feature/loginSignupReducer';
 import { API_BASE_URL } from '../../config/config';
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ const NavBar = () => {
       navigation('/login');
     } catch (error) {
       console.error('Error logging out:', error);
-      // Handle error as needed
+      
     }
   };
 

@@ -15,15 +15,13 @@ export const recipeSlice = createSlice({
         [name]: value
       };
     },
-    setErrorMessage(state, action) {
-      state.errorMessage = action.payload;
-    }
+   
   }
 });
 
 export const {
   setInput,
-  setErrorMessage
+  
 } = recipeSlice.actions;
 
 export default recipeSlice.reducer;
