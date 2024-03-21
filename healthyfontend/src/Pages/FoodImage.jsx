@@ -5,18 +5,17 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const FoodImage = (props) => {
   const dispatch = useDispatch();
-  // const { IMAGWE } = useSelector((state) => state.recipe);
 
-  const [image, setImage] =  useState(null);
-  
+  const [image, setImage] = useState(null);
+
   //Image Uploading Function
-  const handleImageUpload = (event) =>{
+  const handleImageUpload = (event) => {
     const selectedImage = event.target.files[0];
-   
+
     const reader = new FileReader();
 
-    reader.onload = ()=> {
-      if (reader.readyState === 2){
+    reader.onload = () => {
+      if (reader.readyState === 2) {
         setImage(reader.result);
       }
     };
@@ -26,23 +25,23 @@ const FoodImage = (props) => {
   }
   return (
     <>
-    
-    <div className='foodimage-main-container'>
-      <div className="banner-container">
-      <Banner text = {props.text}/>
-        
-      </div>
+
+      <div className='foodimage-main-container'>
+        <div className="banner-container">
+          <Banner text={props.text} />
+
+        </div>
         <div className="foodimge">
-        <h1>Food Image Classification</h1>
-        <input type="file" accept="image/*" onChange={handleImageUpload} />
-         {image && (
-          
-          <div className="uploaded-image-container">
-            
-            <img src={image} alt="uploaded" className='uploaded-image'/>
-            
-            <div className="nutriations">
-            <h1>Food Name</h1>
+          <h1>Food Image Classification</h1>
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
+          {image && (
+
+            <div className="uploaded-image-container">
+
+              <img src={image} alt="uploaded" className='uploaded-image' />
+              
+              <div className="nutriations">
+                <h1>Food Name</h1>
 
                 <table className="nutrition-table">
                   <tr>
@@ -65,17 +64,17 @@ const FoodImage = (props) => {
                     <td>Fiber</td>
                     <td>5g</td>
                   </tr>
-                  
-                </table>
-            </div>
-  
 
-          </div>
-         )}
-          </div>     
-    </div>
-    
-    
+                </table>
+              </div>
+
+
+            </div>
+          )}
+        </div>
+      </div>
+
+
     </>
   )
 }

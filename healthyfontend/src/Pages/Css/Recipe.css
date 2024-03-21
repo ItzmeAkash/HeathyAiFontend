@@ -105,6 +105,10 @@
     height: 100%; 
 }
 
+.recipe-markdown ul{
+    list-style-type: none;
+}
+
 /*Resposive Style*/
 
 /* Small devices (phones, 600px and down) */

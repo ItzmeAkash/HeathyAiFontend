@@ -5,7 +5,8 @@ import { setInput } from "../feature/recipeGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { API_BASE_URL } from "../config/config";
 import axios from "axios";
-import {  ClipLoader  } from "react-spinners"; 
+import { ClipLoader } from "react-spinners";
+import ReactMarkdown from 'react-markdown';
 
 const Recipe = (props) => {
   const { recipe } = useSelector((state) => state.recipe);
@@ -73,7 +74,7 @@ const Recipe = (props) => {
           ) : (
             <div className="recipeoutputs">
               <div className="recipe-instructions">
-                {responseData ? responseData.response : null}
+                {responseData ? <ReactMarkdown className="recipe-markdown">{responseData.response}</ReactMarkdown> : null}
               </div>
             </div>
           )}
