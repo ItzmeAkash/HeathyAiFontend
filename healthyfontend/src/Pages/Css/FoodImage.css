@@ -5,7 +5,7 @@
     justify-content: center;
   }
   
-  .foodimge {
+  .foodimage {
     margin: 26px 0 26px 0;
     background: #f1f7fc;
     text-align: center;
@@ -13,10 +13,21 @@
     padding: 12px 0px;
     
   }
-  .foodimge input{
+  .foodimage input{
     margin: 17px;
    
   }
+  .foodimage button{
+    margin-right: 10px;
+    border: none;
+    background: hsla(115.2deg, 83.89%, 29.22%);
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+  }
+
   input[type=file]::file-selector-button {
 
     margin-right: 10px;
@@ -38,38 +49,28 @@
     border-radius: 19px;
   }
 
-  .uploaded-image-container{
-    display: flex;
-    max-width: 100%;
-    height: auto;
-    justify-content: center;
-    margin-bottom: 27px;
-  }
-
-.nutriations h1{
-    margin-left: 22px;
-  }
-
- .nutrition-table {
-    margin: 10px 45px;
-  }
-
-  
-.nutrition-table td, .nutrition-table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-/* .nutrition-table tr:nth-child(even){background-color: #f2f2f2;} */
-  
-.nutrition-table tr:hover {background-color: #ddd;}
-  
-.nutrition-table th {
-    padding: 12px 22px 13px 20px;
-    padding-bottom: 13px;
-    text-align: center;
-    background-color: #16890c;
+  .response-container {
+    background: #16890c;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+    width: 100%;
+}
+.response-result{
+    width: 74%;
+    display: flex;
+    background: #0c9900;
+    border-radius: 20px;
+    padding: 7px 21px;
+    margin: 14px 0px;
+}
+.loading-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; 
 }
 
 /*Resonsive styles**/

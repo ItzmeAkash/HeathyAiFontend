@@ -55,8 +55,10 @@
     text-align: center;
     padding: 21px;
 }
-.recipeoutputs{
- display: flex;
+.recipeoutputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .recipe-ingredients{
@@ -79,7 +81,7 @@
 }
 
 .recipe-instructions {
-    width: 100%;
+    /* width: 100%; */
     background: #1b8f11;
     border-radius: 21px;
     height: auto;
