@@ -139,7 +139,27 @@
 /* Small devices (phones, 600px and down) */
 
 
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+    
+    .login {
+        margin: 14px 21px;
+        width: 85%;
+    }
+    .input{
+        width: 303px;
+    height: 42px;
+    }
+    .input input {
+        height: 41px;
+        width: 194px;
+        font-size: 17px;
+}
+.submit {
+
+    width: 128px;}
 /* Medium devices (tablets, 601px to 900px) */
+
+
 @media only screen and (min-width: 601px) and (max-width: 900px) {
     
      .login{
