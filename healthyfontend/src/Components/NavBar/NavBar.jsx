@@ -16,7 +16,6 @@ const NavBar = () => {
   const [username, setUsername] = useState('');
   const navigation = useNavigate();
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -24,7 +23,7 @@ const NavBar = () => {
       fetchUserDetails();
     }
   });
-  
+
 
   // Fetching Logined User Details
 
@@ -44,12 +43,12 @@ const NavBar = () => {
       console.error('Error fetching user details:', error);
     }
   };
-  
+
   // MenuToogle Bar
   const handleMenuToggle = () => {
     setMenuVisible(!isMenuVisible);
   };
-  
+
   // Responsive Menu 
   const handleMenuItemClick = (menuItem) => {
     setMenu(menuItem);
@@ -66,7 +65,7 @@ const NavBar = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      
+
       localStorage.removeItem('token');
       localStorage.removeItem('username');
       setUsername('');
@@ -74,7 +73,7 @@ const NavBar = () => {
       navigation('/login');
     } catch (error) {
       console.error('Error logging out:', error);
-      
+
     }
   };
 
@@ -104,7 +103,7 @@ const NavBar = () => {
             {menu === 'Contact Us' ? <hr /> : <></>}
           </li>
         </ul>
-        
+
         {/* """Check if the user has the token. If true, display the user name and logout button""" */}
         <div className="nav-login">
           {localStorage.getItem('token') ? (

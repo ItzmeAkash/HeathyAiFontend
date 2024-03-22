@@ -12,6 +12,7 @@ import ContactUs from './Pages/ContactUs';
 import Footer from './Components/Footer/Footer';
 import LoginSignup from './Pages/LoginSignup';
 import RequireAuth from './RequireAuth';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -28,7 +29,9 @@ function App() {
     <>
       <BrowserRouter>
         <NavBar />
+        
         <Routes>
+        
           <Route path='/' element={<Home text={bannerTexts.home} />} />
           <Route path='/aboutus' element={<AboutUs text={bannerTexts.bannerFoodImageText} />} />
           <Route path='/service' element={<Services text={bannerTexts.service} />} />
@@ -44,7 +47,7 @@ function App() {
           <Route path='/Login' element={<LoginSignup />} />
         </Routes>
         <Footer />
-        <ToastContainer />
+       
       </BrowserRouter>
     </>
   );
