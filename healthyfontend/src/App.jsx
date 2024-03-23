@@ -22,7 +22,7 @@ function App() {
     service: '“Your diet is a bank account. Good food choices are good investments.”',
     health: '“Eat breakfast like a king, lunch like a prince, and dinner like a pauper.”',
     recipe: '“Love yourself enough to live a healthy lifestyle”',
-    bannerFoodImageText: '“An apple a day keeps the doctor away”',
+    bannerFoodImageText: '“An  apple a day keeps the doctor away”',
   };
 
   return (
